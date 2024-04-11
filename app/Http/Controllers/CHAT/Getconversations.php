@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class Getconversations extends Controller
 {
+    public function test(){
+        return response()->json(User::all()); 
+     }
+     
     public function index(Request $request)
     {
         

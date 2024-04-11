@@ -39,9 +39,7 @@ Route::get('/images/{filename}', function ($filename) {
 
 
 // Routes not affected by the middleware
-Route::get('/test', function () {
-    return response()->json(['fvyuhkg' => 'gbyuigil']);
-});
+Route::get('/test', [Getconversations::class, 'test']);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
