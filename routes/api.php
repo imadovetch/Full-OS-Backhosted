@@ -13,9 +13,11 @@ use App\Http\Controllers\GeneralNotifications;
 use App\Http\Controllers\UserSettings;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FetchForGallery;
+use App\Http\Controllers\ChatStoryController;
+use App\Http\Controllers\GetStories;
 // CHAT APP
 
-
+Route::get('/chat-stories', [GetStories::class, 'index']);
 Route::middleware('verifyUser')->group(function () {
     Route::post('/nonfriends', [NonFriendController::class, 'index']);
     Route::post('/sendrequest', [FriendsRequests::class, 'index']);
@@ -26,6 +28,7 @@ Route::middleware('verifyUser')->group(function () {
     Route::post('/updateusersettings', [UserSettings::class, 'index']);
     Route::post('/save-camera-photo', [CameraController::class, 'index']);
     Route::post('/FetchForGallery', [FetchForGallery::class, 'index']);
+    Route::post('/add-chatstorie', [ChatStoryController::class, 'upload']);
 });
 Route::get('/images/{filename}', function ($filename) {
     $path = Storage::disk('public')->path('images/' . $filename);
